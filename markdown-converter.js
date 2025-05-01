@@ -1,6 +1,7 @@
 const fs = require('fs');
 const marked = require('marked');
 const path = require('path');
+const matter = require('gray-matter');
 
 // Configure marked options
 marked.setOptions({
@@ -130,14 +131,16 @@ function extractFrontMatter(content) {
 // Convert markdown file
 function convertMarkdownFile(filePath) {
     const markdown = fs.readFileSync(filePath, 'utf-8');
-    const { frontMatter, content } = extractFrontMatter(markdown);
+    const parsed = matter(markdown);
+    const frontMatter = parsed.data;
+    const content = parsed.content;
     const htmlContent = marked.parse(content);
 
     let html = template
-        .replace('{{title}}', frontMatter.title)
-        .replace('{{date}}', frontMatter.date)
-        .replace('{{author}}', frontMatter.author)
-        .replace('{{category}}', frontMatter.category)
+        .replace('{{title}}', frontMatter.title || '')
+        .replace('{{date}}', frontMatter.date || '')
+        .replace('{{author}}', frontMatter.author || '')
+        .replace('{{category}}', frontMatter.category || '')
         .replace('{{content}}', htmlContent);
 
     // Create output directory if it doesn't exist

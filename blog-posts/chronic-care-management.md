@@ -3,8 +3,6 @@ title: "Remote Patient Monitoring for FQHCs"
 date: "2025-04-15"
 author: "Aaron Baez"
 category: "Healthcare"
-tags: ["chronic care", "healthcare", "patient care", "medical management", "remote patient monitoring"]
-excerpt: "Learn how remote patient monitoring is revolutionizing patient care and improving health outcomes for those with multiple chronic conditions."
 ---
 # Remote Patient Monitoring for FQHCs: Transforming Care Delivery While Improving Financial Sustainability
 
